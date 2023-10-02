@@ -41,15 +41,26 @@
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <a href="{% url 'login' %}" class="btn btn-primary me-2">Login</a>
+            <a href="{% url 'register-customer' %}" class="btn btn-primary">Register</a>
         </div>
     </div>
 </nav>
 
 <div class="container mt-5">
+
+    {% if messages %}
+
+    {% for message in messages %}
+
+    <div class="alert alert-{{message.tags}}" role="alert">
+        <b>{{ message }}</b>
+    </div>
+
+    {% endfor %}
+
+    {% endif %}
+
     {% block content %}
 
     {% endblock content %}
